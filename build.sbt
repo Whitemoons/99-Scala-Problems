@@ -1,7 +1,13 @@
-name := "s99"
+lazy val root = project 
+    .in(file("."))
+    .settings(
+        name := "s99",
 
-version := "1.0"
+        version := "1.0",
 
-scalaVersion := "2.11.11"
+        scalaVersion := "3.3.1",
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+        libraryDependencies += "org.scalameta" %% "munit" % "1.0.0-M10" % Test,
+
+        cancelable in Global := true
+    )

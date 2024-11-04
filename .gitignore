@@ -6,3 +6,9 @@
 *.jar
 *.scalac
 target/
+
+project/project
+
+.metals
+.bloop
+.vscode
