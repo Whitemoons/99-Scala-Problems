@@ -5,6 +5,11 @@ class P01Spec extends munit.FunSuite {
 
   import IList.*
 
+  // toIList 헬퍼 함수 정의 (테스트 내에서 사용)
+  def toIList(lst: List[Int]): IList[Int] = {
+    lst.foldRight(INil: IList[Int])((a, acc) => IElement(a, acc))
+  }
+
   test("last of a non-empty list with multiple elements") {
     val list = IElement(1, IElement(8, INil))
     assertEquals(last(list), 8)
@@ -36,10 +41,8 @@ class P01Spec extends munit.FunSuite {
   }
 
   test("last of a list with different data types") {
-    // Since P01.last is defined for IList[Int], we need to ensure type consistency.
-    // This test is to confirm behavior, but in practice, Scala's type system will prevent misuse.
+    // Since P01.last is defined for IList[Int], we ensure type consistency.
     val list = IElement(100, IElement(200, IElement(300, INil)))
     assertEquals(last(list), 300)
   }
 }
-
